@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-This module provides a function to convert a float to its string representation.
+Module providing a function to convert a float to a string.
 """
 
 
