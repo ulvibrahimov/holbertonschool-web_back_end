@@ -40,7 +40,8 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        Returns the appropriate page of the dataset based on pagination parameters.
+        Returns the appropriate page of the dataset based on
+        pagination parameters.
         """
         assert type(page) is int and page > 0
         assert type(page_size) is int and page_size > 0
