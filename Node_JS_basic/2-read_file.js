@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 function countStudents(path) {
-  if (!path || !fs.existsSync(path) || fs.statSync(path).isDirectory()) {
+  if (!path) {
     throw new Error('Cannot load the database');
   }
 
@@ -12,10 +12,13 @@ function countStudents(path) {
     throw new Error('Cannot load the database');
   }
 
-  const lines = data.split(/\r?\n/).filter((line) => line.trim() !== '');
+  const lines = data
+    .split(/\r?\n/)
+    .filter((line) => line.trim() !== '');
 
-  if (lines.length === 0) {
-    throw new Error('Cannot load the database');
+  if (lines.length <= 1) {
+    console.log('Number of students: 0');
+    return;
   }
 
   const students = lines.slice(1);
