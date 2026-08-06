@@ -8,7 +8,7 @@ function countStudents(path) {
         return;
       }
 
-      const lines = data.split('\n').filter((line) => line.trim() !== '');
+      const lines = data.split(/\r?\n/).filter((line) => line.trim() !== '');
 
       if (lines.length <= 1) {
         console.log('Number of students: 0');
