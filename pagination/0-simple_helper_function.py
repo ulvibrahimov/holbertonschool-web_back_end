@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-This module provides a simple helper function for pagination operations.
+This module provides a simple helper function for pagination.
 """
 from typing import Tuple
 
