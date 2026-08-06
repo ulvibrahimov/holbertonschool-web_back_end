@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Module 1-simple_pagination.
-Contains class Server that paginates a database of popular baby names.
+Module 2-hypermedia_pagination.
+Contains class Server with hypermedia pagination functionality.
 """
 import csv
 import math
-from typing import List, Tuple
+from typing import List, Tuple, Dict, Any
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -52,3 +52,24 @@ class Server:
             return []
 
         return data[start:end]
+
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
+        """
+        Takes the same arguments as get_page and returns a dictionary
+        containing hypermedia pagination key-value pairs.
+        """
+        data = self.get_page(page, page_size)
+        total_items = len(self.dataset())
+        total_pages = math.ceil(total_items / page_size)
+
+        next_page = page + 1 if page < total_pages else None
+        prev_page = page - 1 if page > 1 else None
+
+        return {
+            'page_size': len(data),
+            'page': page,
+            'data': data,
+            'next_page': next_page,
+            'prev_page': prev_page,
+            'total_pages': total_pages
+        }
