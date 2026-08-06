@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-Module 2-hypermedia_pagination.
-Contains class Server with hypermedia pagination functionality.
+This module contains the Server class with hypermedia pagination support.
 """
 import csv
 import math
@@ -10,9 +9,7 @@ from typing import List, Tuple, Dict, Any
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
-    Return a tuple of size two containing a start index and an end index
-    corresponding to the range of indexes to return in a list for those
-    particular pagination parameters.
+    Returns a tuple containing a start index and an end index.
     """
     start_index = (page - 1) * page_size
     end_index = start_index + page_size
@@ -40,8 +37,7 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        Returns the appropriate page of the dataset based on
-        pagination parameters.
+        Returns the appropriate page of the dataset based on params.
         """
         assert type(page) is int and page > 0
         assert type(page_size) is int and page_size > 0
@@ -56,8 +52,7 @@ class Server:
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """
-        Takes the same arguments as get_page and returns a dictionary
-        containing hypermedia pagination key-value pairs.
+        Returns hypermedia pagination dictionary containing data and metadata.
         """
         data = self.get_page(page, page_size)
         total_items = len(self.dataset())
