@@ -1,1 +1,1 @@
-# Holberton School Web Back End
+# ES6 Basics
